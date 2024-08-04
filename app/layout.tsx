@@ -6,7 +6,7 @@ import Context from "../components/InputPicker"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Currency Converted",
+  title: "Currency Converter",
   description: "Convert with static data",
 };
 
