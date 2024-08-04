@@ -136,35 +136,42 @@ export default function Converter() {
   return (
     <div className="w-full h-full">
       <form
-        className="w-full p-5 bg-green-900 h-full text-black"
+        className="flex flex-col items-center justify-center w-full p-5  h-full text-black"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-col gap-10 ">
-          <div className="flex items-center justify-center rounded-[10px] h-[40px]">
-            <input
-              {...register("amountFrom")}
-              className="pl-3 h-full w-3/4 outline-none rounded-tl-md rounded-bl-md"
-              type="number"
-              step="0.01" // Allows for numbers with up to two decimal places
-              placeholder="Amount to Send"
-              min="0"
-              onFocus={() => handleFocus(1)}
-              value={amountFromValue}
-              onChange={(e) => setValue("amountFrom", e.target.value)}
-            />
-            <select
-              {...register("fromCurrency")}
-              className="h-full rounded-tr-md rounded-br-md w-1/4 text-white bg-black"
-            >
-              {from.map((currency, index) => (
-                <option key={index} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex items-center justify-center rounded-[10px] h-[40px]">
+        <div className="flex flex-col gap-10 items-center w-full justify-center h-1/2">
+        <div className=" flex flex-col gap-2">
+          <label className="text-white">Amount to Send</label>
+        <div className="flex lg:w-4/5 items-center justify-center rounded-[10px] h-[40px]">
+       
+       <input
+         {...register("amountFrom")}
+         className="pl-3 h-full w-3/4 outline-none rounded-tl-md rounded-bl-md"
+         type="number"
+         step="0.01" // Allows for numbers with up to two decimal places
+         placeholder="Amount to Send"
+         min="0"
+         onFocus={() => handleFocus(1)}
+         value={amountFromValue}
+         onChange={(e) => setValue("amountFrom", e.target.value)}
+       />
+       <select
+         {...register("fromCurrency")}
+         className="h-full rounded-tr-md rounded-br-md w-1/4 text-white bg-black"
+       >
+         {from.map((currency, index) => (
+           <option key={index} value={currency}>
+             {currency}
+           </option>
+         ))}
+       </select>
+     </div>
+        </div>
+       
+        <div className=" flex flex-col gap-2">
+          <label className="text-white">Amount to Receive</label>
+          <div className="flex lg:w-4/5 items-center justify-center rounded-[10px] h-[40px]">
+          
             <input
               {...register("amountTo")}
               className="pl-3 h-full w-3/4 outline-none rounded-tl-md rounded-bl-md"
@@ -186,8 +193,9 @@ export default function Converter() {
               ))}
             </select>
           </div>
+          </div>
+         
         </div>
-
         <button
           type="submit"
           className={`rounded-lg w-[120px] h-[40px] text-black ${
@@ -197,6 +205,7 @@ export default function Converter() {
         >
           {loading ? "Converting..." : "Convert"}
         </button>
+        
       </form>
     </div>
   );
